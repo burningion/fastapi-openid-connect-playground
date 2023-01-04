@@ -7,9 +7,12 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from pydantic import BaseModel
 
+import os
+
 # to get a string like this run:
 # openssl rand -hex 32
-SECRET_KEY = "30406b5a4c8cb9cf5b963a161963efff59f6325d2d815ff6778d052c4e8b7b2c"
+# UPDATE: grab this from doppler instead
+SECRET_KEY = os.environ['JWT_SECRET_KEY']
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
@@ -19,7 +22,8 @@ fake_users_db = {
         "username": "johndoe",
         "full_name": "John Doe",
         "email": "johndoe@example.com",
-        "hashed_password": "$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW",
+        # UPDATE: grab this from doppler instead
+        "hashed_password": os.environ['EXAMPLE_USER_HASHED_PASSWORD'],
         "disabled": False,
     }
 }
