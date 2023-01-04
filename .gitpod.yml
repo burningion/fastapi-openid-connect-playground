@@ -1,3 +1,7 @@
+# Let's use our custom image with doppler pre-installed
+image:
+  file: .gitpod.Dockerfile
+
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
   - init: pip install -r requirements.txt # runs during prebuild
