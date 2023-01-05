@@ -11,19 +11,32 @@ import os
 
 # to get a string like this run:
 # openssl rand -hex 32
-# UPDATE: grab this from doppler instead
-SECRET_KEY = os.environ['JWT_SECRET_KEY']
+# put this into doppler with the name "JWT_SECRET_KEY"
+try:
+    SECRET_KEY = os.environ['JWT_SECRET_KEY']
+except Exception:
+    print("No JWT_SECRET_KEY found in the environment. Did you add it to your doppler?")
+    exit()
+
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
+# to get a hashed password in python for the example user
+# python generate_password_hash.py <your-password>
+# save this to doppler as EXAMPLE_USER_HASHED_PASSWORD
+try:
+    hashed_dev_password = os.environ['EXAMPLE_USER_HASHED_PASSWORD']
+except Exception:
+    print("No EXAMPLE_USER_HASHED_PASSWORD found in environment. Add string to doppler")
+    print("by running python generate_password_hash.py <your-password>")
+    exit()
 
 fake_users_db = {
     "johndoe": {
         "username": "johndoe",
         "full_name": "John Doe",
         "email": "johndoe@example.com",
-        # UPDATE: grab this from doppler instead
-        "hashed_password": os.environ['EXAMPLE_USER_HASHED_PASSWORD'],
+        "hashed_password": hashed_dev_password,
         "disabled": False,
     }
 }
