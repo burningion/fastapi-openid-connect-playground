@@ -30,4 +30,4 @@ $ python generate_password_hash.py <your-password>
 
 When the project opens, `.gitpod.yml` runs a task that connects to doppler, injects your secrets, and starts up `uvicorn` and FastAPI:
 
-`doppler run -p fastapi-openid-connect-playground -c dev -- -- uvicorn main:app --reload` 
+`doppler run -p fastapi-openid-connect-playground -c dev -- uvicorn main:app --reload` 
