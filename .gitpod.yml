@@ -5,7 +5,7 @@ image:
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
   - init: pip install -r requirements.txt # runs during prebuild
-    command: doppler run -p fastapi-openid-connect-playground -- uvicorn main:app --reload
+    command: doppler run -p fastapi-openid-connect-playground -c doppler.yaml -- uvicorn main:app --reload
 
 # List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
 ports:
