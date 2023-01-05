@@ -5,6 +5,7 @@ image:
 # Let's install our VSCode Extensions
 vscode: 
   extensions:
+    - ms-python.isort
     - ms-python.python
     - charliermarsh.ruff
 
