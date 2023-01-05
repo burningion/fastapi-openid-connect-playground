@@ -4,7 +4,7 @@
 
 ## Setting Up
 
-1. Create a Doppler account and a new project named `fastapi-openid-connect-playground`
+1. Create a [Doppler account](https://doppler.com/join?invite=8904317F) and a new project named `fastapi-openid-connect-playground`
 2. Add your Doppler API key as an environment variable named `DOPPLER_TOKEN` to Gitpod variables [here](https://gitpod.io/variables)
 ![Adding your variable](./assets/environment-variable.png)
 3. [Generate your secrets](#generating-secrets-for-doppler) and add them to Doppler
