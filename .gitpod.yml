@@ -15,10 +15,3 @@ tasks:
     command: doppler run -p fastapi-openid-connect-playground -c dev -- uvicorn main:app --reload
   - name: OpenAPI /docs
     command: gp ports await 8000 && gp preview $(gp url 8000)/docs
-
-# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
-ports:
-  - name: OpenID Connect Playground
-    description: open /docs to view the OpenAPI spec
-    port: 8000
-    onOpen: open-preview
