@@ -7,6 +7,9 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from pydantic import BaseModel
 
+# TODO, add auth here
+from authlib.integrations.starlette_client import OAuth, OAuthError
+
 import os
 
 # to get a string like this run:
