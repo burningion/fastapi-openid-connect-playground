@@ -12,7 +12,9 @@
 
 ## Generating Secrets for Doppler
 
-The two expected, named secrets are `JWT_SECRET_KEY` and `EXAMPLE_USER_HASHED_PASSWORD`. This repo by default expects your Doppler project to be named `fastapi-openid-connect-playground`, and your environment to be called `dev`. You can change this in the `.gitpod.yaml`, if you search for `doppler run`, where our environment variables stored on Doppler get loaded.
+The `JWT_SECRET_KEY` and `EXAMPLE_USER_HASHED_PASSWORD` are two expected secrets. 
+
+This repo by default expects your Doppler project to be named `fastapi-openid-connect-playground`, and your environment to be called `dev`. You can change this in the `.gitpod.yaml`, if you search for `doppler run`, where our environment variables stored on Doppler get loaded.
 
 To generate a `JWT_SECRET_KEY` run:
 
@@ -25,6 +27,16 @@ To generate a hashed password for the `EXAMPLE_USER_HASHED_PASSWORD` run:
 ```bash
 $ python generate_password_hash.py <your-password>
 ```
+
+## Generating the JWKS Secret
+
+In order to generate the certificates to sign JWTs, you'll need to generate the JWKS secrets:
+
+```
+$ python3 generate_jwks_secret.py
+```
+
+Save these as `JWKS_PUBLIC_KEY`, and `JWKS_PRIVATE_KEY` respectively in Doppler.
 
 ## How it works
 
