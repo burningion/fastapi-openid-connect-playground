@@ -38,6 +38,16 @@ $ python3 generate_jwks_secret.py
 
 Save these as `JWKS_PUBLIC_KEY`, and `JWKS_PRIVATE_KEY` respectively in Doppler.
 
+## Adding ngrok for a static URL
+
+As this is an OpenID Connect project, we need to have a static URL to register with other providers. 
+
+To accomplish this, this repository uses ngrok.
+
+You'll want to create an ngrok account, and register a domain. 
+
+In Dopper, create an environment variable named `NGROK_AUTH_TOKEN` with your authorization token as its value, and `NGROK_DOMAIN` with your custom domain. (IE `fastapi-openid-connect.ngrok.io`)
+
 ## How it works
 
 When the project opens, `.gitpod.yml` runs a task that connects to doppler, injects your secrets, and starts up `uvicorn` and FastAPI:
