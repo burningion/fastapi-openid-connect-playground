@@ -14,6 +14,6 @@ tasks:
   - name: OpenAPI /docs
     command: gp ports await 8000 && gp preview $(gp url 8000)/docs
   - name: Open ngrok connection
-    command: doppler secrets -p fastapi-openid-connect-playground -c dev substitute ngrok.yaml > ../ngrok.yaml && cd ../ && ngrok config check
+    command: doppler secrets -p fastapi-openid-connect-playground -c dev substitute ngrok.yaml > /home/gitpod/.config/ngrok/ngrok.yml && ngrok config check
   - init: pip install -r requirements.txt # runs during prebuild
     command: doppler run -p fastapi-openid-connect-playground -c dev -- uvicorn main:app --reload
