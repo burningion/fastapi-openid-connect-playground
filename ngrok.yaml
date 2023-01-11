@@ -1,0 +1,8 @@
+# in ngrok.yml
+authtoken: {{ .NGROK_AUTH_TOKEN }}
+region: us
+tunnels:
+  your_tunnel_name:
+    proto: http
+    hostname: fastapi-openid-connect.ngrok.io
+    addr: 127.0.0.1:8000
