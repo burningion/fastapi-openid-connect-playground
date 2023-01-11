@@ -1,6 +1,7 @@
 # in ngrok.yml
 authtoken: {{ .NGROK_AUTH_TOKEN }}
 region: us
+version: 2
 tunnels:
   your_tunnel_name:
     proto: http
