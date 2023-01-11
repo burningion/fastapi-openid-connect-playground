@@ -3,7 +3,7 @@ authtoken: {{ .NGROK_AUTH_TOKEN }}
 region: us
 version: 2
 tunnels:
-  your_tunnel_name:
+  fastapi-openid-connect:
     proto: http
     hostname: fastapi-openid-connect.ngrok.io
     addr: 127.0.0.1:8000
