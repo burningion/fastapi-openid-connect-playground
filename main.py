@@ -10,7 +10,14 @@ from pydantic import BaseModel
 # TODO, add auth here
 from authlib.integrations.starlette_client import OAuth, OAuthError
 
+import json
 import os
+
+well_known_json = []
+well_known_pwks = []
+
+with open('./static/.well-known/openid-configuration.json') as f:
+    well_known_json = json.load(f)
 
 # to get a string like this run:
 # openssl rand -hex 32
@@ -131,6 +138,9 @@ async def get_current_active_user(current_user: User = Depends(get_current_user)
         raise HTTPException(status_code=400, detail="Inactive user")
     return current_user
 
+@app.get("/.well_defined/openid-configuration")
+async def openid_configration():
+    return well_known_json
 
 @app.post("/token", response_model=Token)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
