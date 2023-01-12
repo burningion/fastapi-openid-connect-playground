@@ -48,6 +48,12 @@ You'll want to create an ngrok account, and register a domain.
 
 In Dopper, create an environment variable named `NGROK_AUTH_TOKEN` with your authorization token as its value, and `NGROK_DOMAIN` with your custom domain. (IE `fastapi-openid-connect.ngrok.io`)
 
+## Configure OAUTH 2.0 with Google
+
+You'lll need to register an OAuth 2.0 client with Google.
+
+Create two secrets in Doppler named `OAUTH2_CLIENT_ID` and `OAUTH2_CLIENT_SECRET`. These should replace our existing secrets.
+
 ## How it works
 
 When the project opens, `.gitpod.yml` runs a task that connects to doppler, injects your secrets, and starts up `uvicorn` and FastAPI:
