@@ -141,11 +141,11 @@ async def get_current_active_user(current_user: User = Depends(get_current_user)
         raise HTTPException(status_code=400, detail="Inactive user")
     return current_user
 
-@app.get("/.well_defined/openid-configuration")
+@app.get("/.well-known/openid-configuration.json")
 async def openid_configration():
     return well_known_json
 
-@app.get("/.well_defined/jwks")
+@app.get("/.well-known/jwks")
 async def get_jwks_json():
     return well_known_jwks
 
