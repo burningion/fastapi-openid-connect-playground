@@ -16,4 +16,4 @@ tasks:
   - name: Open ngrok connection
     command: doppler secrets -p fastapi-openid-connect-playground -c dev substitute ngrok.yaml > /home/gitpod/.config/ngrok/ngrok.yml && ngrok start fastapi-openid-connect
   - init: pip install -r requirements.txt # runs during prebuild
-    command: doppler secrets -p fastapi-openid-connect-playground -c dev substitute oauth2_client_secret.json > ../client_secret.json && doppler run -p fastapi-openid-connect-playground -c dev -- uvicorn main:app --reload
+    command: doppler secrets -p fastapi-openid-connect-playground -c dev substitute oauth2_client_secret.json > ../client_secret.json && doppler secrets -p fastapi-openid-connect-playground -c dev substitute jwks_secret > ../jwks_secret && doppler run -p fastapi-openid-connect-playground -c dev -- uvicorn main:app --reload

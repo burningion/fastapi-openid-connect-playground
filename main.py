@@ -14,10 +14,13 @@ import json
 import os
 
 well_known_json = []
-well_known_pwks = []
+well_known_jwks = []
 
 with open('./static/.well-known/openid-configuration.json') as f:
     well_known_json = json.load(f)
+
+with open('./static/.well-known/jwks') as f:
+    well_known_jwks = json.load(f)
 
 # to get a string like this run:
 # openssl rand -hex 32
@@ -141,6 +144,10 @@ async def get_current_active_user(current_user: User = Depends(get_current_user)
 @app.get("/.well_defined/openid-configuration")
 async def openid_configration():
     return well_known_json
+
+@app.get("/.well_defined/jwks")
+async def get_jwks_json():
+    return well_known_jwks
 
 @app.post("/token", response_model=Token)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends()):
