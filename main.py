@@ -1,3 +1,7 @@
+import json
+import os
+import logging
+
 from datetime import datetime, timedelta
 from typing import Union
 
@@ -6,15 +10,10 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from pydantic import BaseModel
-
-import logging
+from authlib.integrations.starlette_client import OAuth, OAuthError
 
 logger = logging.getLogger(__name__)
 # TODO, add auth here
-from authlib.integrations.starlette_client import OAuth, OAuthError
-
-import json
-import os
 
 well_known_json = []
 well_known_jwks = []
