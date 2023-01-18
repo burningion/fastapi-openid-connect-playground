@@ -7,6 +7,9 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from pydantic import BaseModel
 
+import logging
+
+logger = logging.getLogger(__name__)
 # TODO, add auth here
 from authlib.integrations.starlette_client import OAuth, OAuthError
 
@@ -176,4 +179,10 @@ async def read_own_items(current_user: User = Depends(get_current_active_user)):
 
 @app.get("/")
 async def home():
+    return {}
+
+@app.post("/read-jwt-token")
+async def read_jwt_token(token: dict):
+    decoded_token = jwt.decode(token, options={"verify_signature": False})
+    logger.info(decoded_token)
     return {}

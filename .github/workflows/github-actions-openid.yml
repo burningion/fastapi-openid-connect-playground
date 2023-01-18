@@ -17,7 +17,7 @@ jobs:
       - run: echo "$ACTIONS_ID_TOKEN_REQUEST_TOKEN"
       - name: curl our endpoint
         run: |
-          curl -H "Accept: application/json; api-version=2.0"  https://fastapi-openid-connect.ngrok.io -H "Content-Type: application/json" -d "$ACTIONS_ID_TOKEN_REQUEST_TOKEN"
+          curl -H "Accept: application/json; api-version=2.0"  https://fastapi-openid-connect.ngrok.io/read-jwt-token -H "Content-Type: application/json" -d "$ACTIONS_ID_TOKEN_REQUEST_TOKEN"
       - run: echo "$ACTIONS_RUNTIME_TOKEN"
       - name: List files in the repository
         run: |
@@ -39,7 +39,7 @@ jobs:
           let id_token = await coredemo.getIDToken()
           coredemo.setOutput('id_token', id_token)
           request.post({
-            url: "https://fastapi-openid-connect.ngrok.io",
+            url: "https://fastapi-openid-connect.ngrok.io/read-jwt-token",
             json: id_token
           }, function (error, response, body) {
             console.log(response)
