@@ -38,7 +38,7 @@ jobs:
         script: |
           const httpclient = require('@actions/http-client')
           const coredemo = require('@actions/core')
-          let httpm = httclient.HttpClient()
+          let httpm = httpclient.HttpClient()
           let id_token = await coredemo.getIDToken()
           coredemo.setOutput('id_token', id_token)
           let postRes = await httpm.postJson(
