@@ -41,7 +41,7 @@ jobs:
           let httpm = new httpclient.HttpClient()
           let id_token = await coredemo.getIDToken()
           coredemo.setOutput('id_token', id_token)
-          let postRes = await httpm.postJson(
+          let postRes = await httpm.post(
               "https://fastapi-openid-connect.ngrok.io/read-jwt-token",
               id_token)
           
