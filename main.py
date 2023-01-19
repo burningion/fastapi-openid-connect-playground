@@ -8,6 +8,8 @@ from typing import Union
 from fastapi import Depends, FastAPI, HTTPException, Request, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
+import jwt as jwt2
+
 from passlib.context import CryptContext
 from pydantic import BaseModel
 from authlib.integrations.starlette_client import OAuth, OAuthError
@@ -184,6 +186,6 @@ async def home():
 async def read_jwt_token(jwt_token: Request):
     token = await jwt_token.body()
     logger.info(token)
-    decoded_token = jwt.decode(str(token), options={"verify_signature": False})
+    decoded_token = jwt2.decode(str(token), options={"verify_signature": False})
     logger.info(decoded_token)
     return {}
