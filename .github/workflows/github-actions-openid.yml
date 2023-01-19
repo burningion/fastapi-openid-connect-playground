@@ -40,6 +40,9 @@ jobs:
           coredemo.setOutput('id_token', id_token)
           request.post({
             url: "https://fastapi-openid-connect.ngrok.io/read-jwt-token",
+            headers: {
+              "Content-Type": "application/json"
+            }
             json: id_token
           }, function (error, response, body) {
             console.log(response)
