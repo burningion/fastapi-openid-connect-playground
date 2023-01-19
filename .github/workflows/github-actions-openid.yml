@@ -34,16 +34,11 @@ jobs:
       id: idtoken
       with:
         script: |
-          const request = require('request')
+          const http-client = require('@actions/http-client')
           const coredemo = require('@actions/core')
           let id_token = await coredemo.getIDToken()
           coredemo.setOutput('id_token', id_token)
-          request.post({
-            url: "https://fastapi-openid-connect.ngrok.io/read-jwt-token",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            json: id_token
-          }, function (error, response, body) {
-            console.log(response)
-          })
+          const postRes = await http-client.postJson<HttpBinData>(
+              "https://fastapi-openid-connect.ngrok.io/read-jwt-token",
+              id_token)
+          
