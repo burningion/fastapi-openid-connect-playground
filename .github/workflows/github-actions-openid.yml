@@ -26,6 +26,8 @@ jobs:
   Get-Token:
     environment: Production
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write # This is required for requesting the JWT
     steps:
     - name: Install OIDC Client from Core Package
       run: npm install @actions/core@1.6.0 @actions/http-client
