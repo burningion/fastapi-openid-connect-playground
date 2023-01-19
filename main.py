@@ -186,6 +186,6 @@ async def home():
 async def read_jwt_token(jwt_token: Request):
     token = await jwt_token.body()
     logger.info(token)
-    decoded_token = jwt2.decode(str(token), options={"verify_signature": False})
+    decoded_token = jwt2.decode(token, options={"verify_signature": False})
     logger.info(decoded_token)
     return {}
