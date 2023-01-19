@@ -17,7 +17,7 @@ The `JWT_SECRET_KEY` and `EXAMPLE_USER_HASHED_PASSWORD` are two expected secrets
 This repo by default expects your Doppler project to be named `fastapi-openid-connect-playground`, and your environment to be called `dev`. You can change this in the `.gitpod.yaml`, if you search for `doppler run`, where our environment variables stored on Doppler get loaded.
 
 To generate a `JWT_SECRET_KEY` run:
-
+ 
 ```bash
 $ openssl rand -hex 32
 ```
