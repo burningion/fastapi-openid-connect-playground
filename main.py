@@ -182,6 +182,7 @@ async def home():
 
 @app.post("/read-jwt-token")
 async def read_jwt_token(token: str):
+    logger.info(token)
     decoded_token = jwt.decode(token, options={"verify_signature": False})
     logger.info(decoded_token)
     return {}
