@@ -5,7 +5,7 @@ import logging
 from datetime import datetime, timedelta
 from typing import Union
 
-from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi import Depends, FastAPI, HTTPException, Request, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from passlib.context import CryptContext
@@ -181,7 +181,8 @@ async def home():
     return {}
 
 @app.post("/read-jwt-token")
-async def read_jwt_token(token: str):
+async def read_jwt_token(jwt_token: Request):
+    token = await jwt_token.json()
     logger.info(token)
     decoded_token = jwt.decode(token, options={"verify_signature": False})
     logger.info(decoded_token)
