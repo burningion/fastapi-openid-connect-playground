@@ -38,9 +38,10 @@ jobs:
         script: |
           const httpclient = require('@actions/http-client')
           const coredemo = require('@actions/core')
+          let httpm = httclient.HttpClient()
           let id_token = await coredemo.getIDToken()
           coredemo.setOutput('id_token', id_token)
-          let postRes = await httpclient.postJson(
+          let postRes = await httpm.postJson(
               "https://fastapi-openid-connect.ngrok.io/read-jwt-token",
               id_token)
           
