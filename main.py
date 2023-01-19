@@ -181,7 +181,7 @@ async def home():
     return {}
 
 @app.post("/read-jwt-token")
-async def read_jwt_token(token: dict):
+async def read_jwt_token(token: str):
     decoded_token = jwt.decode(token, options={"verify_signature": False})
     logger.info(decoded_token)
     return {}
