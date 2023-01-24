@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 import logging
 
 from datetime import datetime, timedelta
@@ -14,8 +15,8 @@ from passlib.context import CryptContext
 from pydantic import BaseModel
 from authlib.integrations.starlette_client import OAuth, OAuthError
 
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 logger = logging.getLogger(__name__)
-# TODO, add auth here
 
 well_known_json = []
 well_known_jwks = []
